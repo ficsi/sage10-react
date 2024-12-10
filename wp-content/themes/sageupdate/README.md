@@ -52,3 +52,20 @@ See the [Sage installation documentation](https://roots.io/sage/docs/installatio
 - Follow [@rootswp on Twitter](https://twitter.com/rootswp)
 - Read the [Roots Blog](https://roots.io/blog/)
 - Subscribe to the [Roots Newsletter](https://roots.io/newsletter/)
+
+
+
+# Need to load WSL and type in terminal:
+`/mnt/c/laragon/www/{my-site-name}`
+
+# update bud.config
+```  app.use([
+    '@roots/bud-react', // Add React support
+    '@roots/bud-sass',  // Add Sass support
+  ])
+    .entry({
+      app: ['@scripts/app', '@styles/app'], // Main entry points
+    })
+    .setPublicPath('/app/themes/sage/public/') // Adjust the public path for assets
+    .watch(['resources/**/*']); // Watch for changes in resources directory
+```
