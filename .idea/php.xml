@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/encryption" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/filesystem" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/events" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/log" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/http" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/pipeline" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/macroable" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/routing" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/queue" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/session" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/validation" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/translation" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/view" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/uri-template" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/roots/acorn" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/roots/support" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/laravel/prompts" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/composer" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/carbonphp/carbon-doctrine-types" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/laravel/pint" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/league/flysystem-local" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/cache" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/bus" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/conditionable" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/collections" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/console" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/nunomaduro/termwind" />
+      <path value="$PROJECT_DIR$/wp-content/themes/sage-last/vendor/illuminate/config" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+</project>

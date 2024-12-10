@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-includes/sodium_compat/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/themes/sageupdate" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-includes" isTestSource="false" packagePrefix="PHPMailer" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-includes/SimplePie/src" isTestSource="false" packagePrefix="SimplePie" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/carbonphp/carbon-doctrine-types" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/graham-campbell/result-type" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/guzzlehttp/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/bus" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/conditionable" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/config" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/console" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/container" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/database" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/encryption" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/events" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/http" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/log" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/macroable" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/pipeline" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/queue" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/session" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/support" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/validation" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/illuminate/view" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/laravel/pint" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/laravel/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/league/flysystem-local" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/roots/acorn" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/roots/support" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage-last/vendor/voku/portable-ascii" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
