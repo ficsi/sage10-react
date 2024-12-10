@@ -24,14 +24,15 @@
     "@roots/bud-swc": "^6.24.0",
     "@roots/bud-tailwindcss": "6.24.0",
     "@roots/sage": "6.24.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sass": "^1.82.0",
     "sass-loader": "^16.0.4"
   },
   "dependencies": {
     "@roots/bud-sass": "^6.24.0",
     "@wordpress/data": "^10.13.0",
-    "@wordpress/hooks": "^4.13.0"
+    "@wordpress/hooks": "^4.13.0",
+    "openai": "^4.76.0"
   }
 }
