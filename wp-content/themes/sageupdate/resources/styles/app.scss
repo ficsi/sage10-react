@@ -10,3 +10,109 @@ body {
     color: purple;
   }
 }
+/* General Chat Container Styling */
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+}
+
+/* Chat Messages Area */
+.chat-messages {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-end;
+}
+
+/* User Message Styles */
+.message.user p {
+  background: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 80%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+}
+
+/* Assistant Message Styles */
+.message.assistant p {
+  background: #f1f1f1;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 80%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: auto;
+}
+
+/* Chat Input Area */
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: #f0f0f0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-right: 10px;
+  background: #ffffff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chat-input button:hover {
+  background: #0056b3;
+}
+
+/* Scrollbar Customization */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #aaaaaa;
+}
