@@ -17,19 +17,19 @@
       </a>
 
       <?php echo $__env->make('sections.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-      <span>react app bellow....</span>
-      <?php echo $__env->make('partials.react', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> <!-- Include the React app -->
-      <span>react app above....</span>
+
 
       <main id="main" class="main">
-        <?php echo $__env->yieldContent('content'); ?>
+
+        <?php echo $__env->make('partials.react', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> <!-- Include the React app -->
+
       </main>
 
-      <?php if (! empty(trim($__env->yieldContent('sidebar')))): ?>
-        <aside class="sidebar">
-          <?php echo $__env->yieldContent('sidebar'); ?>
-        </aside>
-      <?php endif; ?>
+
+
+
+
+
 
       <?php echo $__env->make('sections.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>

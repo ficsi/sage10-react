@@ -16,19 +16,19 @@
       </a>
 
       @include('sections.header')
-      <span>react app bellow....</span>
-      @include('partials.react') <!-- Include the React app -->
-      <span>react app above....</span>
+
 
       <main id="main" class="main">
-        @yield('content')
+{{--        @yield('content')--}}
+        @include('partials.react') <!-- Include the React app -->
+
       </main>
 
-      @hasSection('sidebar')
-        <aside class="sidebar">
-          @yield('sidebar')
-        </aside>
-      @endif
+{{--      @hasSection('sidebar')--}}
+{{--        <aside class="sidebar">--}}
+{{--          @yield('sidebar')--}}
+{{--        </aside>--}}
+{{--      @endif--}}
 
       @include('sections.footer')
     </div>
