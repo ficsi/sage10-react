@@ -11,7 +11,7 @@
 |
 */
 
-if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
+if (!file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
@@ -29,12 +29,12 @@ require $composer;
 |
 */
 
-if (! function_exists('\Roots\bootloader')) {
+if (!function_exists('\Roots\bootloader')) {
     wp_die(
         __('You need to install Acorn to use this theme.', 'sage'),
         '',
         [
-            'link_url' => 'https://roots.io/acorn/docs/installation/',
+            'link_url'  => 'https://roots.io/acorn/docs/installation/',
             'link_text' => __('Acorn Docs: Installation', 'sage'),
         ]
     );
@@ -56,9 +56,9 @@ if (! function_exists('\Roots\bootloader')) {
 
 collect(['setup', 'filters'])
     ->each(function ($file) {
-        if (! locate_template($file = "app/{$file}.php", true, true)) {
+        if (!locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
-                /* translators: %s is replaced with the relative file path */
+            /* translators: %s is replaced with the relative file path */
                 sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
             );
         }
@@ -93,3 +93,42 @@ add_action('after_setup_theme', fn() => \Roots\bootloader()->boot(), 0);
 //        true // Load in the footer
 //    );
 //});
+
+//Register custom fields for posts down below
+function add_custom_fields_to_posts_rest_api(): void
+{
+    // Define an array of custom field keys you want to expose
+    $custom_fields = array('test_scf', 'relation_news', 'repeater_test');
+
+    foreach ($custom_fields as $field) {
+        register_rest_field('post', $field, array(
+            'get_callback'    => function ($object) use ($field) {
+                // Use get_field() for ACF to handle complex fields like groups or repeaters
+                return get_field($field, $object['id']);
+            },
+            'update_callback' => null,
+            'schema'          => null,
+        ));
+    }
+}
+
+add_action('rest_api_init', 'add_custom_fields_to_posts_rest_api');
+
+
+//Register custom fields for pages down below
+function add_custom_fields_to_pages_rest_api(): void
+{
+    $custom_fields = array('custom_field_key1', 'custom_field_key2', 'custom_field_key3'); // Add your field keys here
+
+    foreach ($custom_fields as $field) {
+        register_rest_field('page', $field, array(
+            'get_callback'    => function ($object) use ($field) {
+                return get_post_meta($object['id'], $field, true);
+            },
+            'update_callback' => null,
+            'schema'          => null,
+        ));
+    }
+}
+
+add_action('rest_api_init', 'add_custom_fields_to_pages_rest_api');
