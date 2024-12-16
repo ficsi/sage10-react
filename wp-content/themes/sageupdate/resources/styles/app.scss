@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'posts';
 
 body {
   color: #1a1a1a;
@@ -138,4 +139,43 @@ body {
       transition: all 1s;
     }
   }
+}
+
+.flex{
+  display: flex;
+}
+.fd-row{
+  flex-direction: row;
+  &_r{
+    flex-direction: row-reverse;
+  }
+}
+.flex-col-2 {
+  flex: 0 1 50%;
+  max-width: 50%;
+}
+.btn{
+  font-size: 1rem;
+  color: #414042;
+  line-height: 1.375rem;
+  padding: 0.5rem 1.875rem;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  border: 0.0625rem solid #414042;
+  font-weight: 700;
+  cursor: pointer;
+  width: auto;
+  display: inline-block;
+  transition: 0.25s ease-in-out;
+}
+.background-fw {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: -1;
+  width: 100vw;
+  transform: translate(-50%);
 }

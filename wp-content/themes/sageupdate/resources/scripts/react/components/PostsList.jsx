@@ -1,26 +1,39 @@
-import React, {useEffect, useState, useTransition} from 'react'
-import SinglePost from "@scripts/react/components/SinglePost.jsx";
+import React, { useEffect, useState, useTransition } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PostListRender from '@scripts/react/components/PostListRender.jsx';
 
-function PostsList(data) {
+function PostsList({ url }) {
   const [categories, setCategories] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
   const [postsByCatId, setPostsByCatId] = useState(null);
   const [isPending, startTransition] = useTransition();
-  const [isSinglePostOpen, setIsSinglePostOpen] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
+  const navigate = useNavigate();
+
   const fetchCategories = async () => {
     try {
-      const response = await fetch(data.url + 'categories');
+      const response = await fetch(url + 'categories');
       const dataCategories = await response.json();
       setCategories(dataCategories);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  const fetchAllPosts = async () => {
+    try {
+      const response = await fetch(url + 'posts');
+      const dataAllPosts = await response.json();
+      setAllPosts(dataAllPosts);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     async function fetchData() {
       try {
         await fetchCategories();
+        await fetchAllPosts();
       } catch (error) {
         console.error('Error fetching categories:', error);
       }
@@ -33,52 +46,37 @@ function PostsList(data) {
     if (id === 'undefined' || id === null) {
       return;
     }
-    fetch(data.url + 'posts?categories=' + id)
+    fetch(url + 'posts?categories=' + id)
       .then((response) => response.json())
       .then((data) => startTransition(() => setPostsByCatId(data)))
       .catch((error) => console.error(error));
+  };
 
-  }
-
-
-  const handleSinglePostOpen = (content) => {
-    if (content.id) {
-      setSelectedPost(content);
-      setIsSinglePostOpen(true);
-    }
-  }
-  const handleSinglePostClose = () => {
-    setIsSinglePostOpen(false);
-    setSelectedPost(null);
-  }
+  // Navigate to SinglePostRender with post data
+  const handlePostClick = (post) => {
+    navigate(`/post/${post.slug}`, { state: { post } });
+  };
 
   return (
     <>
-      <div>PostsList</div>
-      <ul className={'categories'}>
-        {categories?.map((category) =>
-          <li onMouseEnter={async () => await handleCategoryEnter(category.id)}
-              data-category={category.id}
-              key={category.id}>
+      <ul className="categories">
+        {categories?.map((category) => (
+          <li
+            onClick={async () => await handleCategoryEnter(category.id)}
+            data-category={category.id}
+            key={category.id}
+          >
             {category.name}
-          </li>,
-        )}
+          </li>
+        ))}
       </ul>
-      {
-        postsByCatId ?
-          <ul className={'posts'}>
-            {postsByCatId?.map((post) =>
-              <li onClick={() => handleSinglePostOpen(post)} key={post.id}>
-                {post.title.rendered}
-              </li>,
-            )}
-          </ul> : 'Select Category ...'
-      }
-      {isSinglePostOpen && selectedPost && (
-        <SinglePost data={selectedPost} onClose={handleSinglePostClose} />
+      {postsByCatId ? (
+        <PostListRender data={postsByCatId} onPostClick={handlePostClick} />
+      ) : (
+        'No post selected'
       )}
     </>
-  )
+  );
 }
 
-export default PostsList
+export default PostsList;

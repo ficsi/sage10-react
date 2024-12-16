@@ -98,7 +98,7 @@ add_action('after_setup_theme', fn() => \Roots\bootloader()->boot(), 0);
 function add_custom_fields_to_posts_rest_api(): void
 {
     // Define an array of custom field keys you want to expose
-    $custom_fields = array('test_scf', 'relation_news', 'repeater_test');
+    $custom_fields = array('test_scf', 'relation_news', 'repeater_test', 'background_color', 'post_image');
 
     foreach ($custom_fields as $field) {
         register_rest_field('post', $field, array(
