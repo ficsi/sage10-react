@@ -9,7 +9,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "bud dev",
+    "dev": "bud dev ",
     "build": "bud build",
     "translate": "npm run translate:pot && npm run translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",

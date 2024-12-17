@@ -13,8 +13,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<PostsList url={BASE_URL} />} />
         <Route path="/post/:slug" element={<SinglePostRender />} />
+        <Route path="/2024/:slug" element={<SinglePostRender />} />
       </Routes>
     </Router>
+
   );
 };
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useTransition } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState, useTransition} from 'react';
+import {NavLink, useNavigate} from 'react-router-dom';
 import PostListRender from '@scripts/react/components/PostListRender.jsx';
 
-function PostsList({ url }) {
+function PostsList({url}) {
   const [categories, setCategories] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [postsByCatId, setPostsByCatId] = useState(null);
@@ -54,7 +54,7 @@ function PostsList({ url }) {
 
   // Navigate to SinglePostRender with post data
   const handlePostClick = (post) => {
-    navigate(`/post/${post.slug}`, { state: { post } });
+    navigate(`/post/${post.slug}`);
   };
 
   return (
@@ -70,8 +70,10 @@ function PostsList({ url }) {
           </li>
         ))}
       </ul>
+
+
       {postsByCatId ? (
-        <PostListRender data={postsByCatId} onPostClick={handlePostClick} />
+        <PostListRender data={postsByCatId} onPostClick={handlePostClick}/>
       ) : (
         'No post selected'
       )}

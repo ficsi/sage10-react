@@ -132,3 +132,39 @@ function add_custom_fields_to_pages_rest_api(): void
 }
 
 add_action('rest_api_init', 'add_custom_fields_to_pages_rest_api');
+
+//Register Previous and Next posts to wp res api
+function add_next_previous_posts_to_rest(): void
+{
+    register_rest_field('post', 'next_post', array(
+        'get_callback' => function ($post) {
+            $next_post = get_next_post();
+            if ($next_post) {
+                return array(
+                    'id' => $next_post->ID,
+                    'title' => $next_post->post_title,
+                    'link' => get_permalink($next_post->ID),
+                );
+            }
+            return null;
+        },
+        'schema' => null,
+    ));
+
+    register_rest_field('post', 'previous_post', array(
+        'get_callback' => function ($post) {
+            $previous_post = get_previous_post();
+            if ($previous_post) {
+                return array(
+                    'id' => $previous_post->ID,
+                    'title' => $previous_post->post_title,
+                    'link' => get_permalink($previous_post->ID),
+                );
+            }
+            return null;
+        },
+        'schema' => null,
+    ));
+}
+
+add_action('rest_api_init', 'add_next_previous_posts_to_rest');

@@ -14,39 +14,43 @@ export default async (app) => {
    * @see {@link https://bud.js.org/reference/bud.entry}
    * @see {@link https://bud.js.org/reference/bud.assets}
    */
-
-  app.extensions.get('@roots/bud-wordpress-dependencies').disable();
-  app.extensions.get('@roots/bud-wordpress-externals').disable();
-
   app
-    .entry('app', ['@scripts/app', '@styles/app.scss'])
-    .entry('editor', ['@scripts/editor', '@styles/editor.scss'])
-    .assets(['images'])
-    .watch(['resources/views/**/*', 'resources/scripts/**/*', 'resources/styles/**/*']) // Files to watch for changes
-    .proxy('http://mysite.local') // Your local development URL (WordPress site URL)
-    .serve('http://localhost:3003'); // Dev server URL
+    .entry({
+      app: ['@scripts/app', '@styles/app'], // Main entry points for JS and CSS
+    })
+    .assets(['images']) // Include static assets like images
+    .watch(['resources/views/**/*', 'app/**/*']) // Watch Blade templates and PHP files
+    .proxy('http://mysite.local') // Replace with your Laragon WordPress site URL
+    .serve('http://localhost:3000') // Browsersync server for hot reloading
+    .setPublicPath('/wp-content/themes/sageupdate/public/');
 
-
-  /**
-   * Set public path
-   *
-   * @see {@link https://bud.js.org/reference/bud.setPublicPath}
-   */
-  app.setPublicPath('/app/themes/sage/public/');
-
-
+  // Enable polling for file watching
+  app.hooks.on('dev.middleware.watchOptions', (watchOptions) => ({
+    ...watchOptions,
+    poll: 1000, // Check for changes every 1000ms
+  }));
   /**
    * Development server settings
    *
-   * @see {@link https://bud.js.org/reference/bud.setUrl}
-   * @see {@link https://bud.js.org/reference/bud.setProxyUrl}
-   * @see {@link https://bud.js.org/reference/bud.watch}
+   * Browsersync proxy and server configuration.
+   *
+   * @see {@link https://bud.js.org/reference/bud.proxy}
+   * @see {@link https://bud.js.org/reference/bud.serve}
    */
-  app
-    .setUrl('https://localhost:3030')
+  app.proxy('http://mysite.local') // Replace with your Laragon site URL (e.g., http://mysite.local)
+    .serve('http://localhost:3000') // Browsersync server for hot reloading
+    .setUrl('http://localhost:3000'); // Ensure the development server URL is set correctly
 
-    .setProxyUrl('https://mysite.local')
-    .watch(['resources/views', 'app']);
+  /**
+   * Add extensions for React, Sass, and Tailwind CSS support
+   *
+   * @see {@link https://bud.js.org/extensions/}
+   */
+  app.use([
+    '@roots/bud-react', // Add React support
+    '@roots/bud-sass',  // Add Sass support
+    '@roots/bud-tailwindcss', // Add Tailwind CSS support (if applicable)
+  ]);
 
   /**
    * Generate WordPress `theme.json`
@@ -54,32 +58,14 @@ export default async (app) => {
    * @note This overwrites `theme.json` on every build.
    *
    * @see {@link https://bud.js.org/extensions/sage/theme.json}
-   * @see {@link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json}
    */
   app.wpjson
     .setSettings({
-      background: {
-        backgroundImage: true,
-      },
       color: {
         custom: false,
         customDuotone: false,
         customGradient: false,
-        defaultDuotone: false,
-        defaultGradients: false,
         defaultPalette: false,
-        duotone: [],
-      },
-      custom: {
-        spacing: {},
-        typography: {
-          'font-size': {},
-          'line-height': {},
-        },
-      },
-      spacing: {
-        padding: true,
-        units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
       },
       typography: {
         customFontSize: false,
@@ -88,14 +74,4 @@ export default async (app) => {
     .useTailwindColors()
     .useTailwindFontFamily()
     .useTailwindFontSize();
-
-  app.use([
-    '@roots/bud-react', // Add React support
-    '@roots/bud-sass',  // Add Sass support
-  ])
-    .entry({
-      app: ['@scripts/app', '@styles/app'], // Main entry points
-    })
-    .setPublicPath('/app/themes/sage/public/') // Adjust the public path for assets
-    .watch(['resources/**/*']); // Watch for changes in resources directory
 };

@@ -3,17 +3,11 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
   "settings": {
-    "background": {
-      "backgroundImage": true
-    },
     "color": {
       "custom": false,
       "customDuotone": false,
       "customGradient": false,
-      "defaultDuotone": false,
-      "defaultGradients": false,
       "defaultPalette": false,
-      "duotone": [],
       "palette": [
         {
           "color": "inherit",
@@ -1250,24 +1244,6 @@
           "name": "Rose 950",
           "slug": "rose-950"
         }
-      ]
-    },
-    "custom": {
-      "spacing": {},
-      "typography": {
-        "font-size": {},
-        "line-height": {}
-      }
-    },
-    "spacing": {
-      "padding": true,
-      "units": [
-        "px",
-        "%",
-        "em",
-        "rem",
-        "vw",
-        "vh"
       ]
     },
     "typography": {
