@@ -168,3 +168,8 @@ function add_next_previous_posts_to_rest(): void
 }
 
 add_action('rest_api_init', 'add_next_previous_posts_to_rest');
+
+//Custom route rules for posts
+add_action('init', function () {
+    add_rewrite_rule('^post/([^/]*)/?', 'index.php?pagename=post&name=$matches[1]', 'top');
+});
