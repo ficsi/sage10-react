@@ -36,6 +36,7 @@
 
     <?php (do_action('get_footer')); ?>
     <?php (wp_footer()); ?>
+
   </body>
 </html>
 <?php /**PATH C:\laragon\www\mysite\wp-content\themes\sageupdate\resources\views/layouts/app.blade.php ENDPATH**/ ?>

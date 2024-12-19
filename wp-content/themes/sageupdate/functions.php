@@ -102,8 +102,48 @@ function add_custom_fields_to_posts_rest_api(): void
 
     foreach ($custom_fields as $field) {
         register_rest_field('post', $field, array(
-            'get_callback'    => function ($object) use ($field) {
-                // Use get_field() for ACF to handle complex fields like groups or repeaters
+            'get_callback' => function ($object) use ($field) {
+                // Handle relation_news field specifically
+                if ($field === 'relation_news') {
+                    $related_posts = get_field($field, $object['id']); // Fetch relation_news field
+
+                    if (is_array($related_posts)) {
+                        // Iterate over related posts and fetch their default and custom fields
+                        return array_map(function ($related_post) {
+                            // Ensure $related_post is a WP_Post object
+                            if (!($related_post instanceof WP_Post)) {
+                                $related_post = get_post($related_post); // Convert ID to WP_Post object
+                            }
+
+                            if (!$related_post) return null;
+
+                            // Fetch default WordPress REST API fields
+                            $default_fields = [
+                                'id'      => $related_post->ID,
+                                'title'   => get_the_title($related_post->ID),
+                                'content' => apply_filters('the_content', $related_post->post_content),
+                                'excerpt' => apply_filters('the_excerpt', $related_post->post_excerpt),
+                                'date'    => get_the_date('', $related_post->ID),
+                                'link'    => get_permalink($related_post->ID),
+                            ];
+
+                            // Fetch custom fields for the related post
+                            $custom_fields = [
+                                'test_scf'         => get_field('test_scf', $related_post->ID),
+                                'repeater_test'    => get_field('repeater_test', $related_post->ID),
+                                'background_color' => get_field('background_color', $related_post->ID),
+                                'post_image'       => get_field('post_image', $related_post->ID),
+                            ];
+
+                            // Merge default and custom fields
+                            return array_merge($default_fields, ['custom_fields' => $custom_fields]);
+                        }, $related_posts);
+                    }
+
+                    return null; // Return null if relation_news is not an array
+                }
+
+                // For other fields, return their values directly
                 return get_field($field, $object['id']);
             },
             'update_callback' => null,
@@ -115,23 +155,24 @@ function add_custom_fields_to_posts_rest_api(): void
 add_action('rest_api_init', 'add_custom_fields_to_posts_rest_api');
 
 
+
 //Register custom fields for pages down below
-function add_custom_fields_to_pages_rest_api(): void
-{
-    $custom_fields = array('custom_field_key1', 'custom_field_key2', 'custom_field_key3'); // Add your field keys here
-
-    foreach ($custom_fields as $field) {
-        register_rest_field('page', $field, array(
-            'get_callback'    => function ($object) use ($field) {
-                return get_post_meta($object['id'], $field, true);
-            },
-            'update_callback' => null,
-            'schema'          => null,
-        ));
-    }
-}
-
-add_action('rest_api_init', 'add_custom_fields_to_pages_rest_api');
+//function add_custom_fields_to_pages_rest_api(): void
+//{
+//    $custom_fields = array('custom_field_key1', 'custom_field_key2', 'custom_field_key3'); // Add your field keys here
+//
+//    foreach ($custom_fields as $field) {
+//        register_rest_field('page', $field, array(
+//            'get_callback'    => function ($object) use ($field) {
+//                return get_post_meta($object['id'], $field, true);
+//            },
+//            'update_callback' => null,
+//            'schema'          => null,
+//        ));
+//    }
+//}
+//
+//add_action('rest_api_init', 'add_custom_fields_to_pages_rest_api');
 
 //Register Previous and Next posts to wp res api
 function add_next_previous_posts_to_rest(): void
@@ -173,3 +214,20 @@ add_action('rest_api_init', 'add_next_previous_posts_to_rest');
 add_action('init', function () {
     add_rewrite_rule('^post/([^/]*)/?', 'index.php?pagename=post&name=$matches[1]', 'top');
 });
+
+function my_theme_enqueue_scripts(): void
+{
+    // Search for a CSS file that starts with 'app' in the public directory
+    $css_files = glob(get_template_directory() . '/public/css/app*.css');
+
+    // If any CSS file is found, enqueue the first one
+    if (!empty($css_files)) {
+        // Get the first matching CSS file (app.css or app.a123d4.css)
+        $css_file = $css_files[0];
+
+        // Enqueue the found CSS file
+        wp_enqueue_style('theme-style', get_template_directory_uri() . '/public/css/' . basename($css_file), [], null, 'all');
+    }
+}
+
+add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');

@@ -4,6 +4,7 @@ import App from './components/App'; // Import the root React component
 
 // Find the DOM element where the React app will be rendered
 const rootElement = document.getElementById('react-root');
+// Enable HMR
 
 if (rootElement) {
   // Use React 18's createRoot API to render the App component
