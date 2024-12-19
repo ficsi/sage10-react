@@ -1,13 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
+import RelatedPostsList from "@scripts/react/components/RelatedPostsList.jsx";
+import LoadingOverlay from "@scripts/react/components/LoadingOverlay.jsx";
 
 function SinglePostRender() {
   const navigate = useNavigate();
   const location = useLocation();
   const [post, setPost] = useState(null);
+  const [related, setRelated] = useState(location.state || null);
 
   // Fetch post on initial load or refresh
   useEffect(() => {
+
+    if (location.state) {
+      setRelated(location.state.data)
+    }
+
     if (!location.state) {
       const fetchOnRefresh = async () => {
         try {
@@ -20,16 +28,18 @@ function SinglePostRender() {
         }
       };
       fetchOnRefresh();
+
     } else {
       setPost(location.state);
     }
   }, [location.state]);
   // Dynamic update post meta from SEOPress
+  //TODO: need to be refactor & get outside the component
   useEffect(() => {
     if (post) {
-      // Update document title
-      document.title = post.seopress_titles_title || post.title.rendered;
 
+      // Update document title
+      document.title = post.seopress_titles_title || post.title?.rendered || related.title.rendered;
       // Update meta description
       let metaDescription = document.querySelector("meta[name='description']");
       if (!metaDescription) {
@@ -46,7 +56,7 @@ function SinglePostRender() {
         ogTitle.setAttribute("property", "og:title");
         document.head.appendChild(ogTitle);
       }
-      ogTitle.content = post.seopress_social_fb_title || post.title.rendered;
+      ogTitle.content = post.seopress_social_fb_title || post.title?.rendered || related.content.rendered;
 
       let ogUrl = document.querySelector("meta[property='og:url']");
       if (!ogUrl) {
@@ -74,9 +84,19 @@ function SinglePostRender() {
     }
   }, [post]);
 
-
+  useEffect(() => {
+    console.log('post: ', post)
+    console.log('related: ', related)
+    if (post === null && (related !== 'undefined' || related !== null)) {
+      if (related !== null) {
+        console.log(related)
+        setPost(related ? related : related.data)
+      }
+    }
+  }, [related]);
   // Handle navigation to next/previous posts
   const handlePostNavigation = async (id) => {
+
     if (!id) return;
 
     try {
@@ -89,50 +109,53 @@ function SinglePostRender() {
     }
   };
 
-  if (!post) return <div>Loading...</div>;
+  if (!post) return <Suspense fallback={<LoadingOverlay/>}>Loading...</Suspense>;
 
   return (
-    <section className="block block-single-news single-post-render">
-      <section className="section pos-r">
-        <div className="container">
-          <div className="background-fw"
-               style={post.background_color ? {background: `#${post.background_color.replace("#", "")}`} : undefined}></div>
-          <div className="row flex news-container news-container__news --preview padding-s pos-r jc-sb ai-center">
-            <div className="news-container__desc flex-col-2 p-s">
-              <h1 className="h1">{post.title.rendered}</h1>
-              <p className="p-s">{post.date}</p>
-            </div>
-            <div className="flex-col-3">
-              <img src={post.post_image?.url} alt=""/>
-              <nav>
-                <a onClick={() => handlePostNavigation(post.previous_post?.id)} className="swiper-button-prev">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 20 35" fill="none"
-                       className="svg replaced-svg">
-                    <path
-                      d="M3.31592 17.2018L18.8299 2.25843C19.3662 1.74175 19.3662 0.904079 18.8299 0.387396C18.2934 -0.129132 17.4238 -0.129132 16.8874 0.387396L0.402189 16.2662C-0.134063 16.7829 -0.134063 17.6206 0.402189 18.1373L16.8874 34.0161C17.4331 34.5238 18.3028 34.5093 18.8299 33.9836C19.344 33.4708 19.344 32.6578 18.8299 32.1451L3.31592 17.2018Z"
-                      fill="#414042"></path>
-                  </svg>
-                </a>
-                <a onClick={() => handlePostNavigation(post.next_post?.id)} className="swiper-button-next">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 20 35" fill="none"
-                       className="svg replaced-svg">
-                    <path
-                      d="M15.9165 17.1888L0.402552 32.1322C-0.133779 32.6489 -0.133779 33.4865 0.402552 34.0032C0.939045 34.5198 1.80862 34.5198 2.34504 34.0032L18.8302 18.1243C19.3665 17.6076 19.3665 16.7699 18.8302 16.2532L2.34504 0.374308C1.79929 -0.133386 0.929631 -0.118807 0.402554 0.40687C-0.111562 0.91968 -0.111562 1.73262 0.402554 2.24536L15.9165 17.1888Z"
-                      fill="#414042"></path>
-                  </svg>
-                </a>
-              </nav>
+    <>
+      <section className="block block-single-news single-post-render">
+        <section className="section pos-r">
+          <div className="container">
+            <div className="background-fw"
+                 style={post.background_color ? {background: `#${post.background_color.replace("#", "")}`} : undefined}></div>
+            <div className="row flex news-container news-container__news --preview padding-s pos-r jc-sb ai-center">
+              <div className="news-container__desc flex-col-2 p-s">
+                <h1 className="h1">{post.title?.rendered || post.data.title}</h1>
+                <p className="p-s">{post.date}</p>
+              </div>
+              <div className="flex-col-3">
+                <img src={post.post_image?.url || post.data.custom_fields.post_image?.url} alt=""/>
+                <nav>
+                  <a onClick={() => handlePostNavigation(post.previous_post?.id)} className="swiper-button-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 20 35" fill="none"
+                         className="svg replaced-svg">
+                      <path
+                        d="M3.31592 17.2018L18.8299 2.25843C19.3662 1.74175 19.3662 0.904079 18.8299 0.387396C18.2934 -0.129132 17.4238 -0.129132 16.8874 0.387396L0.402189 16.2662C-0.134063 16.7829 -0.134063 17.6206 0.402189 18.1373L16.8874 34.0161C17.4331 34.5238 18.3028 34.5093 18.8299 33.9836C19.344 33.4708 19.344 32.6578 18.8299 32.1451L3.31592 17.2018Z"
+                        fill="#414042"></path>
+                    </svg>
+                  </a>
+                  <a onClick={() => handlePostNavigation(post.next_post?.id)} className="swiper-button-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 20 35" fill="none"
+                         className="svg replaced-svg">
+                      <path
+                        d="M15.9165 17.1888L0.402552 32.1322C-0.133779 32.6489 -0.133779 33.4865 0.402552 34.0032C0.939045 34.5198 1.80862 34.5198 2.34504 34.0032L18.8302 18.1243C19.3665 17.6076 19.3665 16.7699 18.8302 16.2532L2.34504 0.374308C1.79929 -0.133386 0.929631 -0.118807 0.402554 0.40687C-0.111562 0.91968 -0.111562 1.73262 0.402554 2.24536L15.9165 17.1888Z"
+                        fill="#414042"></path>
+                    </svg>
+                  </a>
+                </nav>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section pos-r content">
-        <div className="container">
-          <div dangerouslySetInnerHTML={{__html: post.content.rendered}}></div>
-        </div>
+        <section className="section pos-r content">
+          <div className="container">
+            <div dangerouslySetInnerHTML={{__html: post.content?.rendered || post.data.content}}></div>
+          </div>
+        </section>
       </section>
-    </section>
+      {post && post.relation_news && post.relation_news.length > 0 && <RelatedPostsList data={post.relation_news} related_data={post}/>}
+    </>
   );
 }
 

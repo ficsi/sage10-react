@@ -6,11 +6,15 @@
 body {
   color: #1a1a1a;
   overflow-x: hidden;
+  border: 10px solid red;
+
   a {
+    color: red;
     font-size: 24px;
-    color: purple;
+    //color: purple;
   }
 }
+
 /* General Chat Container Styling */
 .chat-container {
   width: 100%;
@@ -126,14 +130,16 @@ body {
   padding: 10px;
   background: #f0f0f0;
   border-top: 1px solid #e0e0e0;
-  li{
+
+  li {
     cursor: pointer;
     font-size: 24px;
     color: #9a9a9a;
     transition: all 1s;
     padding: 5px 8px;
     border-radius: 8px;
-    &:hover{
+
+    &:hover {
       color: #1a1a1a;
       background: #c3c4c7;
       transition: all 1s;
@@ -141,20 +147,29 @@ body {
   }
 }
 
-.flex{
+.flex {
   display: flex;
 }
-.fd-row{
+
+.fd-row {
   flex-direction: row;
-  &_r{
+
+  &_r {
     flex-direction: row-reverse;
   }
 }
+
 .flex-col-2 {
   flex: 0 1 50%;
   max-width: 50%;
 }
-.btn{
+
+.flex-col-3 {
+  flex: 0 1 33.33333%;
+  max-width: 33.33333%;
+}
+
+.btn {
   font-size: 1rem;
   color: #414042;
   line-height: 1.375rem;
@@ -169,6 +184,7 @@ body {
   display: inline-block;
   transition: 0.25s ease-in-out;
 }
+
 .background-fw {
   position: absolute;
   left: 50%;
@@ -178,4 +194,16 @@ body {
   z-index: -1;
   width: 100vw;
   transform: translate(-50%);
+}
+
+.pos-r {
+  position: relative;
+}
+
+.flex.ai-stretch {
+  align-items: stretch;
+}
+
+.jc-between {
+  justify-content: space-between;
 }

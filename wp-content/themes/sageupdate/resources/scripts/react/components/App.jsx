@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const BASE_URL = 'https://mysite.local/wp-json/wp/v2/';
 
 const App = () => {
+  console.log('BASI')
   return (
 
     <Router>

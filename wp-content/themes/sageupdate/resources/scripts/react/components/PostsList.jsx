@@ -1,6 +1,8 @@
-import React, {useEffect, useState, useTransition} from 'react';
+import React, {Suspense, useEffect, useState, useTransition} from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 import PostListRender from '@scripts/react/components/PostListRender.jsx';
+import LoadingOverlay from '@scripts/react/components/LoadingOverlay.jsx';
+
 
 function PostsList({url}) {
   const [categories, setCategories] = useState([]);
@@ -8,7 +10,7 @@ function PostsList({url}) {
   const [postsByCatId, setPostsByCatId] = useState(null);
   const [isPending, startTransition] = useTransition();
   const navigate = useNavigate();
-
+  const [isActive, setIsActive] = useState(false);
   const fetchCategories = async () => {
     try {
       const response = await fetch(url + 'categories');
@@ -48,7 +50,10 @@ function PostsList({url}) {
     }
     fetch(url + 'posts?categories=' + id)
       .then((response) => response.json())
-      .then((data) => startTransition(() => setPostsByCatId(data)))
+      .then((data) => startTransition(() => {
+        setPostsByCatId(data);
+        setIsActive(prev => !prev);
+      }))
       .catch((error) => console.error(error));
   };
 
@@ -59,24 +64,26 @@ function PostsList({url}) {
 
   return (
     <>
-      <ul className="categories">
-        {categories?.map((category) => (
-          <li
-            onClick={async () => await handleCategoryEnter(category.id)}
-            data-category={category.id}
-            key={category.id}
-          >
-            {category.name}
-          </li>
-        ))}
-      </ul>
+      <Suspense fallback={<LoadingOverlay/>}>
+        <ul className="categories">
+          {categories?.map((category) => (
+            <li
+              onClick={async () => await handleCategoryEnter(category.id)}
+              data-category={category.id}
+              key={category.id}
+            >
+              {category.name}
+            </li>
+          ))}
+        </ul>
+      </Suspense>
 
+        {postsByCatId ? (
+          <PostListRender data={postsByCatId} onPostClick={handlePostClick}/>
+        ) : (
+          'No post selected'
+        )}
 
-      {postsByCatId ? (
-        <PostListRender data={postsByCatId} onPostClick={handlePostClick}/>
-      ) : (
-        'No post selected'
-      )}
     </>
   );
 }
