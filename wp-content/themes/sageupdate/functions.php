@@ -125,6 +125,7 @@ function add_custom_fields_to_posts_rest_api(): void
                                 'excerpt' => apply_filters('the_excerpt', $related_post->post_excerpt),
                                 'date'    => get_the_date('', $related_post->ID),
                                 'link'    => get_permalink($related_post->ID),
+                                'slug'    => $related_post->post_name
                             ];
 
                             // Fetch custom fields for the related post

@@ -85,8 +85,8 @@ function SinglePostRender() {
   }, [post]);
 
   useEffect(() => {
-    console.log('post: ', post)
-    console.log('related: ', related)
+    // console.log('post: ', post)
+    // console.log('related: ', related)
     if (post === null && (related !== 'undefined' || related !== null)) {
       if (related !== null) {
         console.log(related)
