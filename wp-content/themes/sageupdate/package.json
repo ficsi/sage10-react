@@ -9,7 +9,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"bud dev\" \"browser-sync start --proxy 'http://mysite.local' --host '172.18.176.1' --port 3000 --files 'wp-content/themes/sageupdate/public/**/*,wp-content/themes/sageupdate/resources/**/*'\"",
+    "dev": "concurrently \"bud dev\" \"browser-sync start --proxy 'http://mysite.local' --host '172.18.176.1' --port 3000 --files 'wp-content/themes/sageupdate/resources/**/*.scss' --no-cache --logLevel 'debug'\"",
     "build": "bud build",
     "translate": "npm run translate:pot && npm run translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
@@ -18,8 +18,11 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
+  "resolutions": {
+    "webpack": "5.97.1"
+  },
   "devDependencies": {
-    "@roots/bud": "6.24.0",
+    "@roots/bud": "^6.24.0",
     "@roots/bud-react": "^6.24.0",
     "@roots/bud-sass": "^6.24.0",
     "@roots/bud-swc": "^6.24.0",
@@ -37,7 +40,10 @@
     "@wordpress/data": "^10.13.0",
     "@wordpress/hooks": "^4.13.0",
     "axios": "^1.7.9",
+    "browser-sync-webpack-plugin": "^2.3.0",
     "openai": "^4.76.0",
-    "react-router-dom": "^7.0.2"
+    "react-router-dom": "^7.0.2",
+    "webpack": "^5.97.1",
+    "webpack-manifest-plugin": "^4.1.1"
   }
 }

@@ -1,42 +1,45 @@
 <!doctype html>
 <html <?php (language_attributes()); ?>>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php (do_action('get_header')); ?>
-    <?php (wp_head()); ?>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php (do_action('get_header')); ?>
+  <?php (wp_head()); ?>
 
-  <body <?php (body_class()); ?>>
-    <?php (wp_body_open()); ?>
+</head>
 
-    <div id="app">
-      <a class="sr-only focus:not-sr-only" href="#main">
-        <?php echo e(__('Skip to content')); ?>
+<body <?php (body_class()); ?>>
+<?php (wp_body_open()); ?>
 
-      </a>
+<div id="app">
+  <a class="sr-only focus:not-sr-only" href="#main">
+    <?php echo e(__('Skip to content')); ?>
 
-      <?php echo $__env->make('sections.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+  </a>
 
-
-      <main id="main" class="main">
-
-        <?php echo $__env->make('partials.react', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> <!-- Include the React app -->
-
-      </main>
+  <?php echo $__env->make('sections.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
+  <main id="main" class="main">
+    
+    <?php echo $__env->make('partials.react', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> <!-- Include the React app -->
 
+  </main>
 
+  
+  
+  
+  
+  
 
+  <?php echo $__env->make('sections.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+</div>
 
+<?php (do_action('get_footer')); ?>
+<?php (wp_footer()); ?>
+<script src="<?php echo e(asset('js/app.js')); ?>"></script>
+<link rel="stylesheet" href="/wp-content/themes/sageupdate/resources/styles/app.scss">
 
-      <?php echo $__env->make('sections.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    </div>
-
-    <?php (do_action('get_footer')); ?>
-    <?php (wp_footer()); ?>
-
-  </body>
+</body>
 </html>
 <?php /**PATH C:\laragon\www\mysite\wp-content\themes\sageupdate\resources\views/layouts/app.blade.php ENDPATH**/ ?>

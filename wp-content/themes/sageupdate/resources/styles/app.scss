@@ -1,15 +1,25 @@
+@use 'posts/index';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'posts';
+
+
+html::before {
+  content: "Updated!";
+  color: red;
+  font-size: 24px;
+}
 
 body {
-  color: #1a1a1a;
   overflow-x: hidden;
-  border: 10px solid blue;
+  border: 10px solid magenta;
+
+  h1 {
+    background: red;
+  }
 
   a {
-    color: red;
+    color: green;
     font-size: 24px;
     //color: purple;
   }

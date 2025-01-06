@@ -4,7 +4,7 @@ import 'scripts/react/index.js'
  * Application entrypoint
  */
 domReady(() => {
-  console.log('DOM is ready!!');
+  console.log('DOM is ready!Mitko');
 
 });
 

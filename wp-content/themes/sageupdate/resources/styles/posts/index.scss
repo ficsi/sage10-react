@@ -1,3 +1,8 @@
-@import 'listing';
-@import 'single';
-@import '../loading';
+@use 'listing';
+@use 'single';
+@use '../loading';
+
+* {
+  //border: 1px solid blue;
+  //background: purple;
+}
